@@ -20,3 +20,4 @@ spec:
         image: iwayqdockertest/iwayq:1.0
         ports:
         - containerPort: 8080
+
