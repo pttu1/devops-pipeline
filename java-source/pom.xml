@@ -37,7 +37,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		
-		
+                <dependency>
+                      <groupId>junit</groupId>
+                       <artifactId>junit</artifactId>
+                       <version>3.8.1</version>
+                       <scope>test</scope>
+                </dependency>		
 		
 		
 		
@@ -67,11 +72,12 @@
 			</plugin>
 		</plugins>
 	</build>
-<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>iwayq-libs-release-local</name>
-        <url>http://18.207.136.250:8082/artifactory/iwayq-libs-release-local</url>
-    </repository>
-</distributionManagement>
+        
+      <distributionManagement>
+         <repository>
+            <id>central</id>
+            <name>ip-172-31-21-233.us-east-2.compute.internal-releases</name>
+            <url>http://18.221.163.179:8082/artifactory/iwayq-libs-release/</url>
+          </repository>
+       </distributionManagement>
 </project>
