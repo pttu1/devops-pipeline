@@ -21,7 +21,7 @@ pipeline {
             stage ('SonarQube Analysis') {
                 steps {
                     withSonarQubeEnv('sonar') {
-                        dir('java-source'){sh 'mvn -U clean install sonar:sonar -P sonar'}    
+                        dir('java-source'){sh 'mvn -U clean install sonar:sonar -Dsonar.projectKey=ohwilly -Dsonar.host.url=http://3.143.212.41:9000 -Dsonar.login=d5f145f6e46cb28e90a6d3f975bf30736075f231'}    
                     }
                 }
             }
