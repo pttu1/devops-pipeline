@@ -72,12 +72,11 @@
 			</plugin>
 		</plugins>
 	</build>
-        
       <distributionManagement>
          <repository>
             <id>central</id>
-            <name>ip-172-31-21-233.us-east-2.compute.internal-releases</name>
-            <url>http://18.221.163.179:8082/artifactory/iwayq-libs-release/</url>
+            <name>ip-172-31-25-131.us-east-2.compute.internal-releases</name>
+            <url>http://18.222.229.112:8082/artifactory/libs-release-local</url>
           </repository>
        </distributionManagement>
 </project>
