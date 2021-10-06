@@ -14,16 +14,14 @@ pipeline {
 
             stage ('Build') {
                 steps {
-                    dir('java-source')
-                    sh "mvn package"
+                    dir('java-source'){sh "mvn package"}
                 }
             }
 
             stage ('SonarQube Analysis') {
                 steps {
                     withSonarQubeEnv('sonar') {
-                        sh "cd java-source"
-                        sh 'mvn -U clean install sonar:sonar -P sonar'    
+                        dir('java-source'){sh 'mvn -U clean install sonar:sonar -P sonar'}    
                     }
                 }
             }
