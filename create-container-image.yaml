@@ -6,24 +6,24 @@
   - name: Pull .war artifact from Artifactory
     become: true
     get_url:
-      url: http://18.207.136.250:8082/artifactory/iwayq-libs-release-local/com/iwayq/iwayQApp/1.0-RELEASE/iwayQApp-1.0-RELEASE.war
-      dest: /home/ec2-user
+      url: http://18.222.229.112:8082/artifactory/libs-release-local/com/ohwilly/ohwillyApp/1.0-RELEASE/ohwillyApp-1.0-RELEASE.war
+      dest: /home/admin
       url_username: admin
-      url_password: Admin123
+      url_password: Lifesucks1
 
   - name: Rename .war Artifact
-    command: mv iwayQApp-1.0-RELEASE.war iwayq.war
-  
-  - name: Pull Tomcat  Container Image
+    command: mv /home/admin/ohwillyApp-1.0-RELEASE.war /home/admin/ohwilly.war
+
+  - name: Pull Tomcat Container Image
     docker_image:
       name: tomcat:latest
       source: pull
 
   - name: Build image and with build args
     docker_image:
-      name: iwayq
+      name: ohwilly
       build:
-        path: /home/ec2-user
+        path: /home/admin
         pull: no
         args:
           listen_port: 8080
@@ -31,13 +31,14 @@
 
   - name: Log into DockerHub
     docker_login:
-     username: iwayqdockertest
-     password: P2$$w0rd
+      username: pttu01
+      password: Youwantion1_
 
-    
   - name: Push to docker hub
     docker_image:
-      name: iwayq
-      repository: iwayqdockertest/iwayq:1.0
+      name: ohwilly
+      repository: pttu01/ohwilly:1.0
       push: yes
       source: local
+
+    

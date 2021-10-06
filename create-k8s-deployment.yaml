@@ -1,23 +1,23 @@
-#Deployment
+#K8s Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iwayq-deploy
+  name: pttu01-deploy
   labels:
-    app: iwayq-app
+    app: pttu01-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: iwayq-app
+      app: pttu01-app
   template:
     metadata:
       labels:
-        app: iwayq-app
+        app: pttu01-app
     spec:
       containers:
-      - name: iwayq-container
-        image: iwayqdockertest/iwayq:1.0
+      - name: pttu01-container
+        image: pttu01/ohwilly:1.0
         ports:
         - containerPort: 8080
-
+        
