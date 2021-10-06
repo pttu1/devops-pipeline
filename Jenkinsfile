@@ -16,7 +16,6 @@ pipeline {
                 steps {
                     sh "cd java-source"
                     sh "mvn package"
-                    }
                 }
             }
 
@@ -24,8 +23,7 @@ pipeline {
                 steps {
                     withSonarQubeEnv('sonar') {
                         sh "cd java-source"
-                        sh 'mvn -U clean install sonar:sonar -P sonar'
-                        }     
+                        sh 'mvn -U clean install sonar:sonar -P sonar'    
                     }
                 }
             }
