@@ -1,17 +1,16 @@
-#Service Type nodePort
+#Service Type nodeport
 apiVersion: v1
 kind: Service
 metadata:
-  name: iwayq-service
+  name: pttu01-service
   labels:
-    app: iwayq-app
+    apps: pttu01-app
 spec:
   selector:
-    app: iwayq-app
-
+    app: pttu01-app
+  
   type: NodePort
   ports:
   - nodePort: 31000
     port: 8080
     targetPort: 8080
-
