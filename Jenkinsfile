@@ -35,14 +35,14 @@ pipeline {
                     )
 
                     rtMavenDeployer (
-                        id: "MAVEN DEPLOYER",
+                        id: "MAVEN_DEPLOYER",
                         serverId: "jfrog",
                         releaseRepo: "libs-release",
                         snapshotRepo: "libs-snapshot"
                     )
 
                     rtMavenResolver (
-                        id: "MAVEN DESOLVER",
+                        id: "MAVEN_DESOLVER",
                         serverId: "jfrog",
                         releaseRepo: "libs-release",
                         snapshotRepo: "libs-snapshot"
