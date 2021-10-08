@@ -18,13 +18,13 @@ pipeline {
                 }
             }
 
-            stage ('SonarQube Analysis') {
-                steps {
-                    withSonarQubeEnv('sonar') {
-                        dir('java-source'){sh 'mvn -U clean install sonar:sonar -Dsonar.projectKey=ohwilly -Dsonar.host.url=http://3.131.36.161:9000 -Dsonar.login=b4c86795360938f92cbac84163bdcc53a79ce077'}    
-                    }
-                }
-            }
+            //stage ('SonarQube Analysis') {
+                //steps {
+                    //withSonarQubeEnv('sonar') {
+                        //dir('java-source'){sh 'mvn -U clean install sonar:sonar -Dsonar.projectKey=ohwilly -Dsonar.host.url=http://3.131.36.161:9000 -Dsonar.login=b4c86795360938f92cbac84163bdcc53a79ce077'}    
+                    //}
+                //}
+            //}
 
             stage ('Artifactory configuration') {
                 steps {
