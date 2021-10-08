@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
       <username>admin</username>
-      <password>Admin123</password>
+      <password>Lifesucks1</password>
       <id>central</id>
     </server>
     <server>
       <username>admin</username>
-      <password>Admin123</password>
+      <password>Lifesucks1</password>
       <id>snapshots</id>
     </server>
   </servers>
+  <mirrors>
+    <mirror>
+      <id>central</id>
+      <url>http://18.223.102.21:8082/artifactory/libs-release</url>
+      <blocked>false</blocked>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+    <mirror>
+      <id>snapshots</id>
+      <url>http://18.223.102.21:8082/artifactory/libs-snapshot</url>
+      <blocked>false</blocked>
+      <mirrorOf>snapshots</mirrorOf>
+    </mirror>
+  </mirrors>
   <profiles>
     <profile>
       <repositories>
@@ -21,11 +35,15 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>iwayq-libs-release-local</name>
-          <url>http://18.207.136.250:8082/artifactory/iwayq-libs-release</url>
-	  
+          <name>libs-release</name>
+          <url>http://18.223.102.21:8082/artifactory/libs-release</url>
         </repository>
-       
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://18.223.102.21:8082/artifactory/libs-snapshot</url>
+        </repository>
       </repositories>
       <pluginRepositories>
         <pluginRepository>
@@ -33,11 +51,16 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>iwayq-libs-release-local</name>
-          <url>http://18.207.136.250:8082/artifactory/iwayq-libs-release</url>
-	  <blocked>false</blocked>
+          <name>libs-release</name>
+          <url>http://18.223.102.21:8082/artifactory/libs-release</url>
         </pluginRepository>
-        </pluginRepositories>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://18.223.102.21:8082/artifactory/libs-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
       <id>artifactory</id>
     </profile>
   </profiles>
