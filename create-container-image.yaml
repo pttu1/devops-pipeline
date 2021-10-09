@@ -6,13 +6,13 @@
   - name: Pull .war artifact from Artifactory
     become: true
     get_url:
-      url: http://18.223.102.21:8082/artifactory/libs-release-local/com/ohwilly/ohwillyQApp/1.0-RELEASE/ohwillyQApp-1.0-RELEASE.war
+      url: http://18.117.87.152/:8082/artifactory/libs-release-local/com/ohwilly/ohwillyApp/1.0-RELEASE/ohwillyApp-1.0-RELEASE.war
       dest: /home/admin
       url_username: admin
       url_password: Lifesucks1
 
   - name: Rename .war Artifact
-    command: mv /home/admin/ohwillyQApp-1.0-RELEASE.war /home/admin/ohwilly.war
+    command: mv /home/admin/ohwillyApp-1.0-RELEASE.war /home/admin/ohwilly.war
 
   - name: Pull Tomcat Container Image
     docker_image:
