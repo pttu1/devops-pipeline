@@ -74,8 +74,8 @@ pipeline {
                 steps {
                     sshagent(['sshkey']) {
                         //They are already cloned to the Jenkins local system
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@18.218.41.93:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@18.218.41.93:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@18.218.41.93:/home/admin"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@18.218.41.93:/home/admin"
                     }
                 }
             }
