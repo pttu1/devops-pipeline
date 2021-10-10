@@ -72,7 +72,7 @@ pipeline {
 
             stage ('Copy Dockerfile & Playbook to Ansible Server') {
                 steps {
-                    sshagent(credentials: ['13d7f5c6-e22e-49f7-8618-0a8fb8638527']) {
+                    sshagent(['13d7f5c6-e22e-49f7-8618-0a8fb8638527']) {
                         //They are already cloned to the Jenkins local system
                         sh 'scp -o StrictHostKeyChecking=no Dockerfile ec2-user@18.218.41.93:/home/ec2-user'
                         sh 'scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@18.218.41.93:/home/ec2-user'
