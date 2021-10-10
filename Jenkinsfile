@@ -11,8 +11,8 @@ pipeline {
                 steps {
                     sshagent(['sshkey']) {
                         //They are already cloned to the Jenkins local system
-                        sh 'scp -o StrictHostKeyChecking=no Dockerfile ec2-user@52.14.53.24:/home/ec2-user'
-                        sh 'scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@52.14.53.24:/home/ec2-user'
+                        sh 'scp -o StrictHostKeyChecking=no Dockerfile admin@18.220.201.221:/home/admin'
+                        sh 'scp -o StrictHostKeyChecking=no create-container-image.yaml admin@18.220.201.221:/home/admin'
                     }
                 }
             }
@@ -20,7 +20,7 @@ pipeline {
             stage('Build Container Image') {
                 steps {
                     sshagent(['sshkey']) {
-                        sh "scp -o StrictHostKeyChecking=no ec2-user@52.14.53.24 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "scp -o StrictHostKeyChecking=no admin@18.220.201.221 -C \"sudo ansible-playbook create-container-image.yaml\""
                     }
                 }
             }
