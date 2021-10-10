@@ -21,7 +21,7 @@ pipeline {
                 steps {
                     sshagent(['sshkey']) {
                         //sh "ssh admin@18.220.201.221 -C \"ansible-playbook create-container-image.yaml\""
-                        sh "ssh admin@18.220.201.221 -C \"echo hello world!""
+                        sh "ssh admin@18.220.201.221 -C \"echo hello world!\""
                     }
                 }
             }
