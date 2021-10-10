@@ -18,19 +18,19 @@ pipeline {
                 }
             }
 
-            //stage ('SonarQube Analysis') {
-                //steps {
-                    //withSonarQubeEnv('sonar') {
-                        //dir('java-source'){sh 'mvn -U clean install sonar:sonar -Dsonar.projectKey=ohwilly -Dsonar.host.url=http://3.131.36.161:9000 -Dsonar.login=b4c86795360938f92cbac84163bdcc53a79ce077'}    
-                    //}
-                //}
-            //}
+            stage ('SonarQube Analysis') {
+                steps {
+                    withSonarQubeEnv('sonar') {
+                        dir('java-source'){sh 'mvn -U clean install sonar:sonar -Dsonar.projectKey=ohwilly -Dsonar.host.url=http://3.142.151.76:9000 -Dsonar.login=01c7ce337d9555a4bdfd418de76208e4267063f1'}    
+                    }
+                }
+            }
 
             stage ('Artifactory configuration') {
                 steps {
                     rtServer (
                         id: "jfrog",
-                        url: "http://18.223.102.21:8082/artifactory",
+                        url: "http://18.117.87.152:8082/artifactory",
                         credentialsId: "jfrog"
                     )
 
@@ -83,7 +83,7 @@ pipeline {
             stage('Build Container Image') {
                 steps {
                     sshagent(['sshkey']) {
-                        sh "scp -o StrictHostKeyChecking=no ec2-user@18.224.169.108 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "scp -o StrictHostKeyChecking=no ec2-user@18.218.41.93 -C \"sudo ansible-playbook create-container-image.yaml\""
                     }
                 }
             }
@@ -91,8 +91,8 @@ pipeline {
             stage ('Copy Deployment & Service Manifest to the K8s Master') {
                 steps {
                     sshagent(['sshkey']) {
-                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.15.224.191:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.15.224.191:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.15.222.232:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.15.222.232:/home/ec2-user"
                     }
                 }
             }
@@ -106,8 +106,8 @@ pipeline {
             stage ('Deploy Artifacts to Production') {
                 steps {
                     sshagent([sshkey]) {
-                        sh "scp -o StrictHostKeyChecking=no ec2-user@3.15.224.191 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
-                        sh "scp -o StrictHostKeyChecking=no ec2-user@3.15.224.191 -C \"sudo kubectl apply -f nodePort.yaml\""
+                        sh "scp -o StrictHostKeyChecking=no ec2-user@3.15.222.232 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
+                        sh "scp -o StrictHostKeyChecking=no ec2-user@3.15.222.232 -C \"sudo kubectl apply -f nodePort.yaml\""
                     }
                 }
             }
