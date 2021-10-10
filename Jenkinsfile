@@ -20,7 +20,7 @@ pipeline {
             stage('Build Container Image') {
                 steps {
                     sshagent(['sshkey']) {
-                        sh "scp -o StrictHostKeyChecking=no admin@18.220.201.221 -C \"ansible-playbook create-container-image.yaml\""
+                        sh "ssh admin@18.220.201.221 -C \"ansible-playbook create-container-image.yaml\""
                     }
                 }
             }
